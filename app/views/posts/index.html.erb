@@ -1,0 +1,23 @@
+<% @posts.each do |post| %>
+    <div class="post_wrapper">
+        <h2 class="subject_name"><%= link_to post.subject_name, post %> (<%= post.comments.count %>)</h2>
+        <h3><%= post.lecturer %></h3>
+        <div class="star-rating" data-score= <%= post.rating %>></div>
+        <br>
+        <p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
+    </div>
+<% end %>
+
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: "이전", next_label: "다음" %>
+
+
+<script>
+    $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        }
+    });
+    
+</script>

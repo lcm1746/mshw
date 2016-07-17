@@ -1,0 +1,54 @@
+<%= form_for @post do |f| %>
+    <% if @post.errors.any? %>
+        <div id="errors">
+            <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from savings</h2>
+            <ul>
+                <% @post.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        
+        </div>
+    <% end %><br>
+    
+    <p>
+        <%= f.label :선택 %><br>
+        <%= f.text_field :option %><br>
+    </p><br> 
+
+    <p>
+        <%= f.label :과목코드 %><br>
+        <%= f.text_field :subject_code %><br>
+    </p><br>
+
+    <p>
+        <%= f.label :과목이름 %><br>
+        <%= f.text_field :subject_name %><br>
+    </p><br>
+
+    <p>
+        <%= f.label :교수 %><br>
+        <%= f.text_field :lecturer %><br>
+    </p><br>
+
+    <p>
+        <%= f.label :별점 %><br>
+        <div id="star-rating"></div>
+    </p><br>
+ 
+    <p>
+        <%= f.label :의견 %><br>
+        <%= f.text_area :content %><br>
+    </p><br>    
+    
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
+
+<script>
+    $('#star-rating').raty({
+        path: '/assets/',
+        scoreName: 'post[rating]'
+    });
+</script>

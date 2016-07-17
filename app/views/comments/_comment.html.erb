@@ -1,0 +1,15 @@
+<div class="comment clearfix">
+	<div class="comment_content">
+		<p class="comment_body"><%= comment.body %></p>
+		<p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
+	</div>
+	
+	<% if user_signed_in? %>
+    	<p><%= link_to 'Delete', [comment.post, comment],
+    	               method: :delete,
+    	               class: "button",
+    	               data: { confirm: '댓글을 삭제하시겠습니까?' } %>
+    	</p>
+    <% end %>
+
+</div>

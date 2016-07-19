@@ -1,20 +1,28 @@
 class PostsController < ApplicationController
-    before_action :find_post, only: [:create, :show, :edit, :update, :destroy, :upvote, :downvote]
+    before_action :find_post, only: [:edit, :update, :destroy, :upvote, :downvote]
     before_action :authenticate_user!, except: [:index, :show]
-    
-    def fake
-            
-    end
+
     
     def index
-        @posts = Post.all.order('created_at DESC').paginate(page: params[:page], per_page: 5)
-        if @posts.blank?
-            @avg_review = 0
+        
+	    unless user_signed_in?
+		    redirect_to "/users/sign_in"
+	    end        
+
+        if params[:search]
+            @posts = Post.search(params[:search]).order('created_at DESC').paginate(page: params[:page], per_page: 5)
+
         else
-            @avg_review = @posts.average(:rating).round(2)
+            @posts = Post.all.order('created_at DESC').paginate(page: params[:page], per_page: 5)
+            
         end
+
+    end
+
+    def suspect
     end
     
+
     def new
         @post = Post.new
     end 

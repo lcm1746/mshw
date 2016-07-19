@@ -7,4 +7,13 @@ class Post < ActiveRecord::Base
     validates :lecturer, presence: true
     validates :content, presence: true
     validates :rating, presence: true
+    
+    def self.search(search)
+      where("subject_name LIKE ?", "%#{search}%")
+      where("subject_code LIKE ?", "%#{search}%")
+      where("lecturer LIKE ?", "%#{search}%")
+      where("content LIKE ?", "%#{search}%")
+    end
+    
+    
 end

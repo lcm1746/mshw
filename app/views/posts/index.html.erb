@@ -1,11 +1,28 @@
-<% @posts.each do |post| %>
+<div class="post_wrapper">
+    <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+    <%= submit_tag "Search", :name => nil %>
+    <% end %>
+</div>
+
+<% if @posts.present? %>
+
+    <% @posts.each do |post| %>
+        <div class="post_wrapper">
+            <h2 class="subject_name"><%= link_to post.subject_name, post %> (<%= post.comments.count %>)</h2>
+            <h3><%= post.lecturer %></h3>
+            <div class="star-rating" data-score= <%= post.rating %>></div>
+            <br>
+            <p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
+        </div>
+    <% end %>
+    
+<% else %>
     <div class="post_wrapper">
-        <h2 class="subject_name"><%= link_to post.subject_name, post %> (<%= post.comments.count %>)</h2>
-        <h3><%= post.lecturer %></h3>
-        <div class="star-rating" data-score= <%= post.rating %>></div>
-        <br>
-        <p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
+        <h1><p>검색된 문자열( <strong><%= params[:search] %></strong> )이 존재하지 않습니다.</p></h1>
+        <br><%= image_tag "dog.jpeg" %><br><br>
     </div>
+    
 <% end %>
 
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: "이전", next_label: "다음" %>

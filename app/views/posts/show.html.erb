@@ -14,13 +14,13 @@
     </p>
     
     <p class="body">
-        <%= @post.content %>
+        <h3><%= @post.content %></h3>
     </p>
-    
+    <br>
     <p>
         <div class="star-rating" data-score= <%= @post.rating %> ></div>
     </p>
- 
+    <br>
     <span class="glyphicon glyphicon-thumbs-up"> <%= @post.get_upvotes.size %></span>
     <span class="glyphicon glyphicon-thumbs-down"> <%= @post.get_downvotes.size %></span><br>
     <span class="btn btn-default"><%= link_to "like", like_post_path(@post), method: :get %></span>

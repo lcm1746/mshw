@@ -22,7 +22,10 @@ class PostsController < ApplicationController
     def suspect
     end
     
-
+    def country
+       @post=Post.country
+    end
+    
     def new
         @post = Post.new
     end 

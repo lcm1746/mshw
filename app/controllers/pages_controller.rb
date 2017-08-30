@@ -4,4 +4,11 @@ class PagesController < ApplicationController
     
     end
     
+    def japan
+        
+    end
+    
+    def taiwan
+        
+    end
 end

@@ -4,16 +4,11 @@
 	
 	<style>
 		
-		body { background-image:url("");
-					background-attachment: fixed; 
-					background-repeat: yes-repeat; 
-					background-position:bottom right;
-					background-size:cover;} 
-		.btn-group{
-			background-color: transparent;
-			
-		}
- 
+		body {background-image:url("");
+background-attachment: fixed; 
+background-repeat: yes-repeat; 
+background-position:bottom right;
+background-size:cover;} 
 	</style>
   <title>BroadMarker</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -41,19 +36,14 @@
 		</div>
 
 		<ul>
-			<li><strong><%= link_to "소개", about_path %></strong></li>
+			<li><strong><%= link_to "일본", pages_japan_path %></strong></li>
+		</ul>	
+	<ul>
+			<li><strong><%= link_to "대만", pages_taiwan_path %></strong></li>
 		</ul>
 		<ul>
-			<li><strong><%= link_to "게시판", root_path %></strong></li>
-		</ul>
-		<ul>
-			<li><strong><%= link_to "나라별 여행지", pages_country_path %></strong></li>
-		</ul>
+	
 		
-				
-				
-  	</div>
-
 			<!--
 			<li><strong><a href="#">자유게시판</a></strong></li>
 			<li><strong><a href="#">중고장터</a></strong></li>
@@ -67,7 +57,7 @@
 	<div id="main_content">
 	  <div id="header">
 	  	<% if current_page?(root_path) %>
-		    <p>All Posts</p>
+		    <p>일본 여행지</p>
 		  <% elsif current_page?(about_path) %>
 		  	<p>About</p>
 		  <% else %>

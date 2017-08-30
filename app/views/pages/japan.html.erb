@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <h1 style="color: #ff3535">Japan HOT COURSE</h1>
+  <head>
+   	<style>
+		
+		body {background-image:url("");
+background-attachment: fixed; 
+background-repeat: yes-repeat; 
+background-position:bottom right;
+background-size:cover;} 
+	</style>
+  <title>BroadMarker</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>  
+
+
+	<meta charset="utf-8" />
+	<title>BroadMarker_Japan_Hot Course</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+</head>
+
+
+
+
+
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var contentArray = [];
+var iConArray = [];
+var markers = [];
+var iterator = 0;
+var markerArray = [];
+var map;
+
+// infowindow contents 배열
+ contentArray[0] = "나고야성";
+ contentArray[1] = "도쿄 디즈니랜드";
+ contentArray[2] = "일본 세토대교";
+ contentArray[3] = "하우스 텐보스";
+ contentArray[4] = "도쿄타워";
+ contentArray[5] = "유니버셜 스튜디오";
+ contentArray[6] = "나라공원";
+ contentArray[7] = "도고온천";
+ contentArray[8] = "슈리성";
+ contentArray[9] = "후지산";
+
+// marker icon 배열
+ iConArray[0] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[1] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[2] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[3] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[4] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[5] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[6] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[7] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[8] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[9] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+
+
+
+markerArray[0] = new google.maps.LatLng(35.1915338,136.8577571);
+markerArray[1] = new google.maps.LatLng(35.6176119,139.8531201);
+markerArray[2] = new google.maps.LatLng(34.3986605,133.8040771);
+markerArray[3] = new google.maps.LatLng(33.0858841,129.7760338);
+markerArray[4] = new google.maps.LatLng(35.6570253,139.7147318);
+markerArray[5] = new google.maps.LatLng(34.6654448,135.4292731);
+markerArray[6] = new google.maps.LatLng(34.6858182,135.8373699);
+markerArray[7] = new google.maps.LatLng(33.8508191,132.7762294);
+markerArray[8] = new google.maps.LatLng(26.2166624,127.7153856);
+markerArray[9] = new google.maps.LatLng(35.3389102,138.5217106);
+
+function initialize() {
+	var mapOptions = {
+		zoom: 7,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		center: new google.maps.LatLng(34.36354,135.004181)
+	};
+
+	map = new google.maps.Map(document.getElementById('map'),mapOptions);
+
+	for (var i = 0; i < markerArray.length; i++) {
+		addMarker();
+	}
+}
+
+
+// 마커 추가
+function addMarker() {
+
+	var marker = new google.maps.Marker({
+		position: markerArray[iterator],
+		map: map,
+		draggable: false,
+		icon: iConArray[iterator]
+	});
+	markers.push(marker);
+
+	var infowindow = new google.maps.InfoWindow({
+      content: contentArray[iterator]
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
+	});
+	iterator++;
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+//-->
+</SCRIPT>
+<body>
+
+
+<div id="map" style="position: absolute;width: 800px;height: 400px;z-index: 15;top: 50%;left: 26%;margin: -100px 0 0 -150px;"></div>
+
+	<div id="sidebar">
+		<div id="logo">
+			<%= link_to root_path do %>
+				<%= image_tag "logo.svg" %>
+			<% end %>
+		</div>
+
+		<ul>
+			<li><strong><%= link_to "일본", pages_japan_path %></strong></li>
+		</ul>
+		<ul>
+			<li><strong><%= link_to "대만", pages_taiwan_path %></strong></li>
+		</ul>
+		<ul>
+	
+		
+
+
+</body>
+</html>

@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   
   get '/aa/', to: 'posts#aa'
   get '/about', to: 'pages#about'
-  
+  get '/pages/japan' => 'pages#japan'
+  get '/pages/taiwan' => 'pages#taiwan'
+  get '/pages/country' => 'pages#country'
+  get '/public/404' => 'public#404'
 end

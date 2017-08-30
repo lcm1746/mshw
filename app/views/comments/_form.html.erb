@@ -3,8 +3,21 @@
         <%= f.label :comment %><br>
         <%= f.text_field :body %>
     </p>
-    <br>
+         <p>
+        <%= f.label :별점 %><br>
+        <div id="star-rating"></div>
+    </p><br>
+    </p>
+    </p><br>
     <p>
         <%= f.submit %>
     </p>
+ 
 <% end %>
+
+<script>
+    $('#star-rating').raty({
+        path: '/assets/',
+        scoreName: 'post.rating'
+    });
+</script>

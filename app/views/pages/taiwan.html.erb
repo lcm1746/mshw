@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <h1 style="color: red">Taiwan HOT COURSE</h1>
+  <head>
+
+
+	<meta charset="utf-8" />
+	<title>BroadMarker_Taiwan_Hot Course</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var contentArray = [];
+var iConArray = [];
+var markers = [];
+var iterator = 0;
+var markerArray = [];
+var map;
+
+// infowindow contents 배열
+ contentArray[0] = "지우펀";
+ contentArray[1] = "국립고궁박물관";
+ contentArray[2] = "미라마 엔터테이먼트 파크";
+ contentArray[3] = "스린야시장";
+ contentArray[4] = "훙마오청";
+ contentArray[5] = "용산사";
+ contentArray[6] = "중정기념당";
+ contentArray[7] = "타이베이 시립동물원";
+ contentArray[8] = "즈난궁";
+ contentArray[9] = "얼얼바 평화 기념공원";
+
+// marker icon 배열
+ iConArray[0] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[1] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[2] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[3] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[4] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[5] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[6] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[7] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[8] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+ iConArray[9] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+
+
+
+markerArray[0] = new google.maps.LatLng(25.10700,121.84300);
+markerArray[1] = new google.maps.LatLng(25.1020737,121.5450005);
+markerArray[2] = new google.maps.LatLng(25.08281,121.55756);
+markerArray[3] = new google.maps.LatLng(25.08660,121.52540);
+markerArray[4] = new google.maps.LatLng(25.17500,121.43300);
+markerArray[5] = new google.maps.LatLng(25.0371623,121.497712);
+markerArray[6] = new google.maps.LatLng(25.0338219,121.5169963);
+markerArray[7] = new google.maps.LatLng(24.9963168,121.575839);
+markerArray[8] = new google.maps.LatLng(24.97920,121.58700);
+markerArray[9] = new google.maps.LatLng(25.0408063,121.5068522);
+
+function initialize() {
+	var mapOptions = {
+		zoom: 7,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		center: new google.maps.LatLng(24.97920,121.58700)
+	};
+
+	map = new google.maps.Map(document.getElementById('map'),mapOptions);
+
+	for (var i = 0; i < markerArray.length; i++) {
+		addMarker();
+	}
+}
+
+
+// 마커 추가
+function addMarker() {
+
+	var marker = new google.maps.Marker({
+		position: markerArray[iterator],
+		map: map,
+		draggable: false,
+		icon: iConArray[iterator]
+	});
+	markers.push(marker);
+
+	var infowindow = new google.maps.InfoWindow({
+      content: contentArray[iterator]
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
+	});
+	iterator++;
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+//-->
+</SCRIPT>
+<body>
+<div id="map" style="position: absolute;width: 800px;height: 400px;z-index: 15;top: 50%;left: 26%;margin: -100px 0 0 -150px;"></div>
+
+	<div id="sidebar">
+		<div id="logo">
+			<%= link_to root_path do %>
+				<%= image_tag "logo.svg" %>
+			<% end %>
+		</div>
+
+		<ul>
+			<li><strong><%= link_to "일본", pages_japan_path %></strong></li>
+		</ul>
+		<ul>
+			<li><strong><%= link_to "대만", pages_taiwan_path %></strong></li>
+		</ul>
+		<ul>
+	
+</body>
+</html>

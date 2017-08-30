@@ -1,3 +1,5 @@
+
+
 <div class="post_wrapper">
     <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
@@ -9,12 +11,17 @@
 
     <% @posts.each do |post| %>
         <div class="post_wrapper">
-            <h2 class="subject_name"><%= link_to post.subject_name, post %> (<%= post.comments.count %>)</h2>
+            <h2 class="subject_name"><%= link_to post.option, post %> (<%= post.comments.count %>)</h2>
             <h3><%= post.lecturer %></h3>
-            <div class="star-rating" data-score= <%= post.rating %>></div>
+            <!--<div class="star-rating" data-score= <%= post.rating %>></div>-->
             <br>
             <p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
+            <br>
+            <span class="glyphicon glyphicon-thumbs-up"> <%= post.get_upvotes.size %></span>
+    <span class="glyphicon glyphicon-thumbs-down"> <%= post.get_downvotes.size %></span><br>
+    
         </div>
+        
     <% end %>
     
 <% else %>
@@ -28,13 +35,13 @@
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: "이전", next_label: "다음" %>
 
 
-<script>
-    $('.star-rating').raty({
-        path: '/assets/',
-        readOnly: true,
-        score: function() {
-            return $(this).attr('data-score');
-        }
-    });
+<!--<script>-->
+<!--    $('.star-rating').raty({-->
+<!--        path: '/assets/',-->
+<!--        readOnly: true,-->
+<!--        score: function() {-->
+<!--            return $(this).attr('data-score');-->
+<!--        }-->
+<!--    });-->
     
-</script>
+<!--</script>-->
